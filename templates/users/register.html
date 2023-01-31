@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block header %}
+    <h2>{% block title %} Registro {% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+    {{ form.nombre.label }}
+    {{ form.nombre() }}
+
+    {{ form.email.label }}
+    {{ form.email() }}
+
+    {{ form.password.label }}
+    {{ form.password() }}
+
+    {{ form.confirm.label }}
+    {{ form.confirm() }}
+    <button type="submit">Registrar</button>
+</form>
+{% endblock %}

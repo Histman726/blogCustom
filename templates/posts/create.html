@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block header %}
+    <h2>{% block title %} Crear blog {% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+        {{ form.title.label }}
+        {{ form.title() }}
+
+        {{ form.body.label }}
+        {{ form.body() }}
+        <button type="submit">Crear</button>
+    </form>
+{% endblock %}

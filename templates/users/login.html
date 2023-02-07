@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block header %}
+    <h2>{% block title %} Inicio de sesión {% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+    {{ form.email.label }}
+    {{ form.email() }}
+
+    {{ form.password.label }}
+    {{ form.password() }}
+    <button type="submit">Iniciar sesión</button>
+</form>
+{% endblock %}

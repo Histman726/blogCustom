@@ -1,9 +1,10 @@
 from flask import (
     render_template, Blueprint, flash, redirect, request, session, url_for,
 )
-from flask_login import login_user
+from flask_login import login_user, current_user
 from app import db, loginManager
 from forms.user.registerForm import RegisterForm
+from forms.user.loginForm import LoginForm
 from models.userDB import User
 
 
@@ -29,6 +30,16 @@ def registro():
     return render_template('users/register.html', form=form)
 
 
-@usersURL.route('/login')
+@usersURL.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('users/login.html')
+    print(current_user)
+    form = LoginForm(meta={'csrf': False})
+
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and user.encrypt_password(form.password.data):
+            login_user(user, remember=True)
+
+        return redirect(url_for('posts.index'))
+
+    return render_template('users/login.html', form=form)

@@ -8,6 +8,7 @@ from flask_login import current_user
 from app import db
 from forms.post.createForm import CreateForm
 from models.postDB import Post
+from utilities.gets import get_user
 
 postURL = Blueprint('posts', __name__)
 
@@ -15,7 +16,8 @@ postURL = Blueprint('posts', __name__)
 @postURL.route('/')
 @postURL.route('/index')
 def index():
-    return render_template('posts/index.html')
+    posts = Post.query.all()
+    return render_template('posts/index.html', posts=posts, author=get_user, current_user=current_user)
 
 
 @postURL.route('/blog/create', methods=['GET', 'POST'])

@@ -6,7 +6,28 @@
 {% endblock %}
 
 {% block content %}
-    <article>
+    <header>
         <h4>Publicaciones</h4>
-    </article>
+        <a href="">Crear post</a>
+    </header>
+    <hr>
+    {% for post in posts %}
+        <article>
+            <header>
+                <h4>{{ post.title }}</h4>
+                Subido el: {{ post.fecha.strftime('%Y/%m/%d %H:%M') }}
+                Publicado por: {{ author(post.id_user).nombre }}
+            </header>
+            <div class="body">
+                <p>{{ post.body }}</p>
+            </div>
+            <footer>
+                {% if current_user.id == post.id_user %}
+                    <a href="">Editar</a>
+                    <a href="">Eliminar</a>
+                {% endif %}
+            </footer>
+        </article>
+    {% endfor %}
+
 {% endblock %}

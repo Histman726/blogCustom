@@ -2,8 +2,11 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
+DATABASE_URI = 'postgresql+psycopg2://postgres:2486@localhost:5432/blog'
+DATABASE_URI_TEST = 'sqlite:///blog.sqlite'
+
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.sqlite'
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI_TEST
 db = SQLAlchemy(app)
 app.secret_key = 'BLOG_CUSTOM'
 loginManager = LoginManager(app)

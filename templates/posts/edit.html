@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block header %}
+    <h2>{% block title %} Editar post {% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+        {{ form.title.label }}
+        {{ form.title(value=post.title) }}
+
+        {{ form.body.label }}
+        <textarea name="body" id="body">{{ post.body }}</textarea>
+
+        <button type="submit">Editar</button>
+    </form>
+{% endblock %}

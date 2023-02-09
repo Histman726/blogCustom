@@ -6,11 +6,13 @@
 
 {% block content %}
     <form action="" method="post">
-    {{ form.email.label }}
-    {{ form.email() }}
+        {{ form.email.label }}
+        {{ form.email() }}
 
-    {{ form.password.label }}
-    {{ form.password() }}
-    <button type="submit">Iniciar sesión</button>
-</form>
+        {{ form.password.label }}
+        {{ form.password() }}
+        <button type="submit">Iniciar sesión</button>
+    </form>
+    <hr>
+    <a href="{{ url_for('users.registro') }}">Registrarse</a>
 {% endblock %}

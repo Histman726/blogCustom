@@ -9,6 +9,9 @@ def get_user(id):
 
 
 def get_post(id, check_author=True):
+    if id is None:
+        return
+
     post = Post.query.get_or_404(id)
 
     if post is None:

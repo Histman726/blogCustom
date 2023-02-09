@@ -32,7 +32,6 @@ def registro():
 
 @usersURL.route('/login', methods=['GET', 'POST'])
 def login():
-    print(current_user)
     form = LoginForm(meta={'csrf': False})
 
     if form.validate_on_submit():
